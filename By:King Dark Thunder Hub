@@ -1,49 +1,64 @@
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+--[[
+Credits goes to REDz.
+And you can find more here! [This is v5 version]
+https://github.com/REDzHUB/RedzLibV5
+And maybe some things may not work correctly (doesn't to me)
+]]--
+
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 
-    local Window = redzlib:MakeWindow({
-        Title = "",
-        SubTitle = "hello",
-        SaveFolder = "Redz Config"
-    })
+local Window = redzlib:MakeWindow({
+  Title = "",
+  SubTitle = "hello",
+  SaveFolder = "Redz Config"
+})
 
-    -- Tabs
-    local Tab1 = Window:MakeTab({"Tab 1", "cool"})
+--Tabs
 
-    -- Botões
-    Tab1:AddButton({"Print", function()
-        print("Hello World!")
-    end})
+local Tab1 = Window:MakeTab({"Tab 1", "cool"})
 
-    local Toggle1 = Tab1:AddToggle({
-        Name = "Speed",
-        Description = "Idk",
-        Default = false
-    })
+--Buttons
 
-    local Toggle2 = Tab1:AddToggle({
-        Name = "Speed",
-        Description = "By: king",
-        Default = false,
-        Callback = function(State)
-            if State then
-                _G.HohoVersion = "v4"
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI"))()
-                print("Speed ativado!")
-            else
-                print("Speed desativado!")
-            end
+Tab1:AddButton({"Print", function()
+print("Hello World!")
+end})
+
+local Toggle1 = Tab1:AddToggle({
+  Name = "Speed",
+  Description = "Idk",
+  Default = false
+})
+
+
+local Toggle2 = Tab1:AddToggle({
+    Name = "Speed",
+    Description = "By: king",
+    Default = false,
+    Callback = function(State)
+        -- Se o toggle estiver ativado
+        if State then
+            _G.HohoVersion = "v4"
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI"))()
+            print("Speed ativado!")
+        else
+            -- Aqui você pode colocar o que deve acontecer ao desativar o toggle, se necessário
+            print("Speed desativado!")
         end
-    })
+    end
+})
 
-    -- Slider para ajuste de velocidade
-    Tab1:AddSlider({
-        Name = "Speed",
-        Min = 1,
-        Max = 100,
-        Increase = 1,
-        Default = 16,
-        Callback = function(Value)
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-        end
-    })
-end
+
+
+Tab1:AddSlider({
+  Name = "Speed",
+  Min = 1,
+  Max = 100,
+  Increase = 1,
+  Default = 16,
+  Callback = function(Value)
+  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+  end
+})
